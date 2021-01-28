@@ -1,0 +1,50 @@
+.jumbotron {
+    background-color: rgb(189, 69, 69);
+    padding: 11em 0em;
+    height: 800px;
+}
+
+hr {
+    border: 3px solid maroon;
+    width: 200px;
+}
+
+h1 span {
+    font-size: 5rem;
+}
+
+span.last-name {
+    color: snow;
+    font-weight: bold;
+}
+
+p.lead {
+    font-size: 2em;
+}
+
+p strong, em {
+    color: snow;
+}
+
+.about,
+.education,
+.experience,
+.skill,
+.contact {
+    padding-top: 4em;
+}
+
+.footer-background {
+    padding-top: 3em;
+
+    background-color: rgb(189,69,69);
+    height: 200px;
+}
+
+#social-icon {
+    color: snow;
+}
+
+#social-icon :hover {
+    color: black;
+}
