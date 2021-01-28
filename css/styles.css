@@ -1,7 +1,11 @@
+section {
+    min-height: 350px;
+}
+
 .jumbotron {
     background-color: rgb(189, 69, 69);
     padding: 11em 0em;
-    height: 800px;
+    height: 700px;
 }
 
 hr {
@@ -10,7 +14,7 @@ hr {
 }
 
 h1 span {
-    font-size: 5rem;
+    font-size: 4rem;
 }
 
 span.last-name {
