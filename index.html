@@ -29,7 +29,7 @@
             </button>
           
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
+              <ul class="navbar-nav ms-auto">
                 <li class="nav-item active">
                   <a class="nav-link page-scroll" href="#home">Home
                   </a>
@@ -434,29 +434,38 @@
             </ul>
             </div>
             <div class="col-7">
-              <form>
+              <div class="alert alert-danger alert-dismissible fade show d-none" role="alert">
+                <strong>Terima Kasih !</strong> Pesan anda sudah kami terima.
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+              </div>
+              <form name="my-cv-contact-form">
                 <div class="form-group">
                     <label for="nama">Nama
                     </label>
-                    <input type="text" class="form-control" id="nama" placeholder="masukkan nama">
+                    <input type="text" class="form-control" id="nama" placeholder="masukkan nama" name="nama">
                 </div>
                 <div class="form-group">
                     <label for="email">Email
                     </label>
-                    <input type="email" class="form-control" id="email" placeholder="masukkan email">
+                    <input type="email" class="form-control" id="email" placeholder="masukkan email" name="email">
                 </div>
                 <div class="form-group">
                     <label for="telp">No Telepon
                     </label>
-                    <input type="number" class="form-control" id="telp" placeholder="masukkan nomor telepon">
+                    <input type="number" class="form-control" id="telp" placeholder="masukkan nomor telepon" name="nomor telepon">
                 </div>
                 <div class="form-group">
                     <label for="pesan">Pesan
                     </label>
-                    <textarea name="pesan" id="pesan" rows="10" class="form-control" placeholder="masukkan pesan"></textarea>
+                    <textarea name="pesan" id="pesan" rows="10" class="form-control" placeholder="masukkan pesan" name="pesan"></textarea>
                 </div>
                 <div class="form-group">
-                    <button type="button" class="btn btn-warning">Kirim pesan
+                    <button type="submit" class="btn btn-warning btn-send">Kirim pesan
+                    </button>
+
+                    <button class="btn btn-warning btn-loading d-none" type="button" disabled>
+                      <span class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+                      Loading...
                     </button>
                 </div>
             </form>
@@ -512,6 +521,34 @@
 
     <!-- my script -->
     <script src="js/script.js" crossorigin="anonymous"></script>
+
+    <!-- google sheets contact form -->
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbzBl64T89niceGqAEKGgmFQ9f8eHR0wkZOzs5Di4UHGilKXo2CFKMQHiwoJTwG-i8wD_g/exec'
+      const form = document.forms['my-cv-contact-form']
+      const btnSend = document.querySelector('.btn-send');
+      const btnLoading = document.querySelector('.btn-loading');
+      const alert = document.querySelector('.alert');
+    
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        // ketika tombol submit diklik
+        // tampilkan tombol loading, hilangkan tombol kirim
+        btnLoading.classList.toggle('d-none');
+        btnSend.classList.toggle('d-none');
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            // tampilkan tombol kirim, hilangkan tombol loading
+            btnLoading.classList.toggle('d-none');
+            btnSend.classList.toggle('d-none');
+            // tampilkan alert
+            alert.classList.toggle('d-none');
+            // reset form
+            form.reset();
+            console.log('Success!', response)})
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
 
   </body>
 </html>
