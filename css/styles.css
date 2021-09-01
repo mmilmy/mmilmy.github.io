@@ -8,6 +8,10 @@ section {
     height: 700px;
 }
 
+img.rounded-circle {
+    border: 4px solid #FFFFFF;
+}
+
 hr {
     border: 3px solid maroon;
     width: 200px;
@@ -18,7 +22,7 @@ h1 span {
 }
 
 span.last-name {
-    color: snow;
+    color: #FFFFFF;
     font-weight: bold;
 }
 
@@ -27,7 +31,7 @@ p.lead {
 }
 
 p strong, em {
-    color: snow;
+    color: #FFFFFF;
 }
 
 .about,
@@ -46,9 +50,9 @@ p strong, em {
 }
 
 #social-icon {
-    color: snow;
+    color: #FFFFFF;
 }
 
 #social-icon :hover {
-    color: black;
+    color: #000;
 }
